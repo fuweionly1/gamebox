@@ -82,16 +82,19 @@ int main()
 			str=apentboxstr(box_num_strs[box_num],times[box_num],lastHashs[box_num],miracle);
 			if(check(str)==0)
 			{
-				cout<<"str="<<str<<endl;
-				cout<<"miracle="<<miracle<<endl;
+				//cout<<"str="<<str<<endl;
+				//cout<<"miracle="<<miracle<<endl;
 				lastHashs[box_num]=str;
 				miracles[box_num]=miracle;
 				break;
 			}
 			
         }
-		cout<<" box num="<<box_num<<" open time="<<times[box_num]<<" Hash="<<lastHashs[box_num]<<endl;
-		cout<<" miracles="<<miracles[box_num]<<endl<<endl;			
+		if(i!=Num_Max)//如果=Num_Max，说明这次没找到（在int的范围内没找到）
+		{
+			cout<<" box num="<<box_num<<" open time="<<times[box_num]<<" Hash="<<lastHashs[box_num]<<endl;
+			cout<<" miracles="<<miracles[box_num]<<endl<<endl;	
+		}		
 	}
 	
 	return 0;
