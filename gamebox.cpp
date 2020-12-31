@@ -57,8 +57,10 @@ int main()
     //10个箱子的集合,从1开始到10,0作为第0个箱子
     string box_num_strs[11];
     string times[11];
-    string lastHashs[11]="0";
-    string miracles[11]="12";
+    string lastHashs[11];
+    string miracles[11];
+	
+	lastHashs[0]="0";//0作为第0个箱子
     //单个箱子的字段
     string box_num_str="1";
     string time="1609399589";
@@ -79,7 +81,7 @@ int main()
             
             sprintf(temstr,"%d",i);
             miracle=temstr;
-            str=apentboxstr(box_num_strs[box_num],times[box_num],lastHashs[box_num],miracle);
+            str=apentboxstr(box_num_strs[box_num],times[box_num],lastHashs[box_num-1],miracle);
             if(check(str)==0)
             {
                 //cout<<"str="<<str<<endl;
