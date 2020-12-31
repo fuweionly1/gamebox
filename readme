@@ -1,1 +1,44 @@
-g++ -o gamebox test.cpp -std=c++11 -lssl -lcrypto
+//由于C++自带没有Hash256，故下载了一个openssl/sha.h的库，见百度
+//如果源码编译不过，说明编译机缺失库，可以试试我的阿里云服务器。139.129.116.80  fuwei  9o0p(O)P
+//编译命令。
+g++ -o gamebox gamebox .cpp -std=c++11 -lssl -lcrypto
+
+执行：
+./gamebox 
+效果如下：
+box num=1 open time=1609407089 Hash=000000c86c0b054bc2bbfb2b1b02494f2847a8ddbe6f0306a7ed0a0c6a0d57a5
+ miracles=1298053
+
+
+ box num=2 open time=1609407102 Hash=00000cca3bc36444d1b0470a7436b8e1b7dcdf072d85422c6d6b37d88f21864f
+ miracles=1005246
+
+
+ box num=3 open time=1609407111 Hash=000000472b383ccfc4557896fea8c380e27421f62905354e574a51cd2c58d77e
+ miracles=182419
+
+
+ box num=4 open time=1609407113 Hash=0000091b3705350cef830819eab78ada9096b2563fce610074f3b20319f3c1e1
+ miracles=296549
+
+
+ box num=5 open time=1609407116 Hash=000003ed9bc3983b8d3bb330d196e0dcd8c6d2b642c216ca56e2711032f6c63f
+ miracles=889667
+
+
+ box num=6 open time=1609407125 Hash=0000056f6db70405c4e937620c58a3eccd72afeab522fa999e79f076dea20141
+ miracles=577304
+
+
+ box num=7 open time=1609407131 Hash=000000dd090d785352d3d8e46ccd17752714fcfdc0d9d29e40176f3ca9e427bd
+ miracles=234234
+
+
+ box num=8 open time=1609407133 Hash=000001e9172f161071dcee512f2eb5269532f08dcb3b88427b98e6ef0bfb9aef
+ miracles=275413
+
+ box num=9 open time=1609407135 Hash=000009c71ca02df4838afe0a607263967c51280d6716c900fc4fc28d3e5b7436
+ miracles=6771298
+
+ box num=10 open time=1609407203 Hash=00000deaad62b1a85b556ec9bd81764aed7f7689cb7c93e0684be527ecf38255
+ miracles=2534044
