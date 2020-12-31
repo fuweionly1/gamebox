@@ -2,8 +2,10 @@
 #include <openssl/sha.h>
 #include <time.h>
 #include <stdio.h>
-
 using namespace std;
+
+#define Box_Max 10
+#define Num_Max 2147483647
 //hash256函数封装
 string sha256(const string hashstr)
 {
@@ -38,8 +40,8 @@ string gettime()
 string apentboxstr(string sNum,string sTime,string sHash,string sMiracle)
 {
 	string Temstr="";//临时转换的变量
-	str=sNum+sTime+sHash+sMiracle;
-	return sha256(str);
+	Temstr=sNum+sTime+sHash+sMiracle;
+	return sha256(Temstr);
 }
 //检查当前是否hash值是否满足条件，校验前5位是否是0
 int check(string Hashstr)
@@ -65,14 +67,14 @@ int main()
 	string str="";
 	//str=apentboxstr(box_num,time,lastHash,miracle);	
 	//cout<<"str="<<str<<endl;
-	for(int box_num=1;box_num<11;box_num++)
+	for(int box_num=1;box_num<=Box_Max;box_num++)
 	{
 		time=gettime();
 		sprintf(temstr,"%d",box_num);
 		box_num_str=temstr;
 		box_num_strs[box_num]=box_num_str;
 		times[box_num]=time;
-		for(i=0;i<654321;i++)
+		for(i=0;i<Num_Max;i++)
 		{
 			
 			sprintf(temstr,"%d",i);
