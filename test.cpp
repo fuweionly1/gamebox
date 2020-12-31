@@ -2,10 +2,12 @@
 #include <openssl/sha.h>
 #include <time.h>
 #include <stdio.h>
+
 using namespace std;
 //hash256函数封装
 string sha256(const string hashstr)
 {
+	//这个函数为C++ Hash256自带的示例函数，不作为修改
 	char Hashbuf[2];
     unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;
@@ -20,28 +22,29 @@ string sha256(const string hashstr)
     }
 	return MyBoxHashString;
 }
+
 //获取当前时间
 string gettime()
 {
-	string strtime="";
-	char temstr[1000];//临时转换的变量
-    time_t myt=time(NULL);
-    //cout<<"sizeof(time_t) is: "<<(long int)(myt)<<endl;
-	sprintf(temstr,"%d",(long int)(myt));
-	strtime=temstr;
-    return strtime;
+	string stime="";//string类型的time，前缀模式s开头
+	char temstr[1000];//临时转换的变量，C的int和string互转的函数部分版本不兼容，故采用标准的流打印，后面相同
+    time_t ltime=time(NULL);//long类型的time，前缀模式l开头
+    //cout<<"sizeof(time_t) is: "<<(long int)(ltime)<<endl;
+	sprintf(temstr,"%d",(long int)(ltime));
+	stime=temstr;
+    return stime;
 }
 //根据箱子编号、时间、上一个箱子的hash、神奇数字生成自己的hash
-string apentboxstr(string no,string time,string lastHash,string miracle)
+string apentboxstr(string sNum,string sTime,string sHash,string sMiracle)
 {
-	string str="";
-	str=no+time+lastHash+miracle;
+	string Temstr="";//临时转换的变量
+	str=sNum+sTime+sHash+sMiracle;
 	return sha256(str);
 }
-//检查当前是否hash值是否满足条件
+//检查当前是否hash值是否满足条件，校验前5位是否是0
 int check(string Hashstr)
 {
-	string checkflag="00000000";
+	string checkflag="00000000";//校验前5位是否是0，多定义3位
 	//cout<<"Hashstr="<<Hashstr<<endl;
 	return Hashstr.compare(0,5,checkflag,0,5);	
 }
@@ -85,7 +88,7 @@ int main()
 			}
 			
         }
-		cout<<" box num="<<box_num<<" open time="<<times[box_num]<<" lastHash="<<lastHashs[box_num]<<endl;
+		cout<<" box num="<<box_num<<" open time="<<times[box_num]<<" Hash="<<lastHashs[box_num]<<endl;
 		cout<<" miracles="<<miracles[box_num]<<endl<<endl;			
 	}
 	
